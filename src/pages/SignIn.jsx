@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import {AiFillEyeInvisible,AiFillEye} from "react-icons/ai"
 import { Link, useNavigate } from 'react-router-dom';
+import { signInWithEmailAndPassword, getAuth }  from "firebase/auth";
+import { toast } from "react-toastify";
 
 export default function SignIn() {
-
-   
-    
 
     const [showPassword,setShowPassword] = useState(false);
     const [formData,setFormData]=useState({
@@ -13,38 +12,36 @@ export default function SignIn() {
         password:"123456",
     });
     const {email,password} = formData;
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
     function onChange(e){
         setFormData((prevState)=>({
             ...prevState,
             [e.target.id]:e.target.value
         }))
     }
-    // async function onSubmit(e) {
-    //     e.preventDefault();
-    //     try {
-    //       const auth = getAuth();
-    //       const userCredential = await signInWithEmailAndPassword(
-    //         auth,
-    //         email,
-    //         password
-    //       );
-    //       if (userCredential.user) {
-    //         navigate("/");
-    //       }
-    //     } catch (error) {
-    //       toast.error("Bad user credentials");
-    //     }
-    //   }
+    async function onSubmit(e) {
+        e.preventDefault();
+        try {
+          const auth = getAuth();
+          const userCredential = await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+          );
+          if (userCredential.user) {
+            navigate("/");
+          }
+        } catch (error) {
+          toast.error("Bad user credentials");
+        }
+      }
   return (
     <section>
         <h1 className="text-3xl text-center mt-8 font-bold">Sign in </h1>
         <div className="flex justify-center flex-wrap items-center px-6 py-12 max-w-6xl mx-auto">
-            {/* <div className="md:w-[67%] lg:w-[50%] mb-12 md:mb-6">
-                <img src="/home.jpg" alt="home" className="w-full rounded-2xl"/>
-            </div> */}
+            
             <div className=" w-full md:w-[67%] lg:w-[40%] ">
-            <form >
+            <form onSubmit={onSubmit}>
                 <input className="mb-6 w-full px-4 py-2  text-xl text-gray-800 bg-white border-gray-300 rounded transition ease-in-out" type="email" id="email" value={email} onChange={onChange} placeholder="Email" 
                 />
                 <div className="relative mb-6">

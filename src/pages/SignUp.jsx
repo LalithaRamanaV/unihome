@@ -87,9 +87,6 @@ export default function SignUp() {
 
             <button className="w-full bg-blue-600 text-white px-7 py-3 text-sm font-medium uppercase rounded" type="submit" >Signup</button>
 
-            {/* <div className="flex items-center my-4 before:border-t before:flex-1 before:border-gray-300 after:border-t after:flex-1 after:border-gray-300" >
-                <p className="text-center font-semibold mx-4">or</p>
-            </div> */}
 
              </form> 
 

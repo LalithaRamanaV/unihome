@@ -5,13 +5,17 @@ import { signInWithEmailAndPassword, getAuth }  from "firebase/auth";
 import { toast } from "react-toastify";
 
 export default function SignIn() {
-
+      
+    
     const [showPassword,setShowPassword] = useState(false);
     const [formData,setFormData]=useState({
+
         email:"demo@gmail.com",
-        password:"123456",
+        password:"123456"
+
     });
-    const {email,password} = formData;
+    const {email,setEmail}=formData;
+    const {password,setPassword} = formData;
     const navigate = useNavigate();
     function onChange(e){
         setFormData((prevState)=>({
@@ -73,9 +77,10 @@ export default function SignIn() {
 
             <button className="w-full bg-blue-600 text-white px-7 py-3 text-sm font-medium uppercase rounded "  type="submit"
           onClick={()=>{
-            email("demo@gmail.com");
-            password("123456");
-          }}>Guest login</button>
+            setEmail("demo@gmail.com");
+            setPassword("123456");
+          }}
+          >Guest login</button>
 
 
              </form> 

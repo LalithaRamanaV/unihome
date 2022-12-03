@@ -41,12 +41,9 @@ export default function Profile() {
   async function onSubmit() {
     try {
       if (auth.currentUser.displayName !== name) {
-        //update display name in firebase auth
         await updateProfile(auth.currentUser, {
           displayName: name,
         });
-
-        // update name in the firestore
 
         const docRef = doc(db, "users", auth.currentUser.uid);
         await updateDoc(docRef, {
@@ -55,7 +52,7 @@ export default function Profile() {
       }
       toast.success("Profile details updated");
     } catch (error) {
-      toast.error("Could not update the profile details");
+      toast.error("Can't update the profile details");
     }
   }
   useEffect(() => {
@@ -98,8 +95,6 @@ export default function Profile() {
         <h1 className="text-3xl text-center mt-6 font-bold">My Profile</h1>
         <div className="w-full md:w-[50%] mt-6 px-3">
           <form>
-           
-
             <input
               type="text"
               id="name"
@@ -110,9 +105,6 @@ export default function Profile() {
                 changeDetail && "bg-red-200 focus:bg-red-200"
               }`}
             />
-
-           
-
             <input
               type="email"
               id="email"

@@ -13,7 +13,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { db } from "../firebase";
-import { FcHome } from "react-icons/fc";
+import { FaHome } from "react-icons/fa";
 import { useEffect } from "react";
 import ListingItem from "../components/ListingItem";
 
@@ -150,7 +150,7 @@ export default function Profile() {
               to="/create-listing"
               className="flex justify-center items-center"
             >
-              <FcHome className="mr-2 text-3xl bg-red-200 rounded-full p-1 border-2" />
+              <FaHome className="mr-2 text-3xl  rounded-full p-1 border-2" />
               Sell or rent your home
             </Link>
           </button>

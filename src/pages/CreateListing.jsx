@@ -84,7 +84,7 @@ export default function CreateListing() {
       return;
     }
 
-
+  
     async function storeImage(image) {
       return new Promise((resolve, reject) => {
         const storage = getStorage();
@@ -98,6 +98,7 @@ export default function CreateListing() {
             const progress =
               (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
             console.log("Upload is " + progress + "% done");
+           
             switch (snapshot.state) {
               case "paused":
                 console.log("Upload is paused");
